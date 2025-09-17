@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+{% if g.user and g.user == "admin" %}
+<form action="" method="POST" enctype="multipart/form-data" novalidate>
+    {{ form.hidden_tag()}}
+    {{ form.book_name.label }}
+    {{ form.book_name()}}
+
+    {% for error in form.book_name.errors %}
+    {{ error }}
+    {% endfor %}
+    <br/>
+    {{ form.price.label }}
+    {{ form.price() }}
+
+    {% for error in form.price.errors %}
+    {{ error }}
+    {% endfor %}
+    <br/>
+    {{ form.description.label }}
+    {{ form.description() }}
+
+    {% for error in form.description.errors %}
+    {{ error }}
+    {% endfor %}
+    <br/>
+    {{ form.type.label }}
+    {{ form.type() }}
+
+    {% for error in form.type.errors %}
+    {{ error }}
+    {% endfor %}
+    <br/>
+    {{ form.stockpiles.label }}
+    {{ form.stockpiles() }}
+
+    {% for error in form.stockpiles.errors %}
+    {{ error }}
+    {% endfor %}
+    <br/>
+    {{ form.img_loc.label }}
+    {{ form.img_loc() }}
+
+    {% for error in form.img_loc.errors %}
+    {{ error }}
+    {% endfor %}
+    <br/>
+    {{ form.book_cover.label }}
+    {{ form.book_cover() }}
+
+    {% for error in form.book_cover.errors %}
+    {{ error }}
+    {% endfor %}
+    <br/>
+    {{ form.submit() }}
+</form>
+    <table>
+        <tr>
+            <td>Name</td>
+            <td>Single Price</td>
+            <td></td>
+            <td>stockpiles</td>
+        </tr>
+        {% for book in books %}
+            <tr>
+                <td>{{ book["name"] }}</td>
+                <td>{{ book["price"] }}€</td>
+                <td><img src="{{ url_for('static', filename=book['img_loc']) }}" alt="from wiki"></td>
+                <td>{{ book["stockpiles"] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+   
+{% else %}
+    <p>Its only for <b>ADMIN</b>!!!!!!</p>
+{% endif %}
+
+{% endblock %}

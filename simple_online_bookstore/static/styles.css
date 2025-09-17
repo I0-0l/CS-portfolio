@@ -1,0 +1,79 @@
+:root{
+    --word-color:rgb(113, 193, 230);
+    --web-background-color:rgb(230, 191, 113);
+    --main-color:white;
+}
+
+html{
+    background-color: lightblue;
+    color: var(--word-color);
+}
+
+
+
+header{
+    border-radius: 1em;
+    padding: 1em;
+    text-align: center;
+
+}
+
+nav{
+    background-color: var(--word-color);
+    font-size: 1.5rem;
+    text-align: center;   
+}
+
+nav a{
+    color: white;
+}
+div{
+    background-color: var(--main-color);
+    padding: 1px;
+    right: 0px;
+    top: 0px;
+}
+
+footer{
+    background-color: var(--main-color);
+}
+
+img{
+    width:150px;
+    height:200px;
+}
+main{
+    background-color: var(--main-color);
+}
+
+@media (hover:hover){
+    nav a:hover{
+    color: rgb(209, 205, 205);
+    }
+}
+
+@media screen and (min-width:600px){
+    body {
+        width:80%;
+            margin:0 auto;
+        display: grid;
+    }
+}
+
+
+@viewport{
+    width:device-width;
+} 
+
+table, th, td {
+    border: 1px solid var(--word-color);
+    border-collapse: collapse;
+    text-align: center;
+    padding-left: 2em;
+    padding-right: 2em;
+    width: 100%;
+  }
+
+.book_title{
+    font-size: 1.5em;
+}

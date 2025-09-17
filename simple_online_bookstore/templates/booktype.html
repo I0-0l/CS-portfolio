@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+    <h1>Welcome</h1>
+    <h2>Our Book Catalog</h2>
+    <details>
+        <summary><h3>Select Book Type</h3></summary>
+        <a href="{{ url_for('books_by_type', book_type='science fiction') }}">science fiction</a>
+        <a href="{{ url_for('books_by_type', book_type='romantic') }}">romantic</a>
+        <a href="{{ url_for('books_by_type', book_type='historical') }}">historical</a>
+    </details>
+
+    <table>
+        {% for book in books %}
+            <tr>
+                <td>{{ book["name"] }}</td>
+                <td>{{ book["type"] }}</td>
+                <td>{{ book["price"] }}€</td>
+                <td><img src="{{ url_for('static', filename=book['img_loc']) }}" alt=""></td>
+                <td><a href="{{ url_for('book', book_id=book['book_id']) }}">Details</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+
+
+{% endblock %}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="{{ url_for('static',filename='styles.css') }}">
+        <title>
+            Jiangnan Bookstore
+        </title>
+    </head>
+    <body>
+        <div id="loginout">
+            {% if g.user %}
+                <p>User id: {{ g.user }}</p>
+                <p><a href="{{url_for('logout')}}">Logout</a></p>
+            {% else %}
+                <p><a href="{{ url_for('register')}}">Register</a></p>
+                <p><a href="{{ url_for('login') }}">Login</a></p>
+            {% endif %}
+        </div>
+        <header>
+            <h1>Jiangnan Bookstore</h1>
+        </header>
+        <nav>
+            <a href="{{ url_for('books') }}">Home</a>
+            <a href="{{ url_for('cart') }}">Your cart</a>
+            <a href="{{ url_for('add_into_stockpiles') }}">Admin</a>
+        </nav>
+        <main>
+            {%block main_content %}
+
+            {%endblock%}
+        </main>
+    </body>
+</html>

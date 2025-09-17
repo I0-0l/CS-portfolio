@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+    <h1>Your cart</h1>
+    {% if cart %}
+        <table>
+        <tr>
+            <td>Name</td>
+            <td>Single Price</td>
+            <td>Cover</td>
+            <td>Number</td>
+            <td>Total</td>
+            <td>Add</td>
+            <td>Reduce</td>
+        </tr>
+        {% for each_book in names %}
+        <tr>
+            <td class="book_title">{{ names[each_book]["name"] }}</td>
+            <td>{{ names[each_book]["price"] }}</td>
+            <td><img src="{{ url_for( 'static', filename=names[each_book]['img_loc'] ) }}" alt=""></td>
+            <td>{{ names[each_book]["number"] }}</td>
+            <td>{{ names[each_book]["price_total"] }}</td>
+            <td> <a href="{{ url_for( 'add_in_cart', book_id=names[each_book]['book_id'] ) }}">add</a></td>
+            <td> <a href="{{ url_for( 'reduce_from_cart', book_id=names[each_book]['book_id'] ) }}">reduce</a></td>
+        </tr>
+        {% endfor %}
+        </table>
+        <p><h2><a href="{{ url_for( 'buy' ) }}">BUY! IT!</a></h2></p>
+    {% else %}
+        <p>Your cart is empty</p>
+    {% endif %}
+    <p>
+        <b>Total:</b>{{ sum }}
+    </p>
+    <p>
+        <a href="{{ url_for('books') }}">BACK</a>
+    </p>
+{% endblock %}
